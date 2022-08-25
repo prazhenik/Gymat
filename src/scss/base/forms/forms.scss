@@ -1,0 +1,130 @@
+//v1 050222 - стили дефолтной формы
+//v2 260622 - стили дефолтной формы
+//v4 100822 - стили дефолтной формы
+//v4 190822 - стили дефолтной формы
+
+//</FORM>
+
+
+// <CHECK>
+// Снипет (HTML): chk
+// @import "checkbox";
+
+// <RADIO>
+// Снипет (HTML): opt
+// @import "radio";
+
+// <SELECT>
+// Снипет (HTML): sel
+// @import "select";
+
+// <RATING>
+// Снипет (HTML): rating
+// @import "rating";
+
+// <QUANTITY>
+// Снипет (HTML): qa
+// @import "quantity";
+
+// <RANGE>
+// Снипет (HTML):
+// @import "range";
+
+// <CALENDAR>
+// Снипет (HTML):
+// @import "datepicker";
+
+
+//<FORM>
+// Снипет (HTML): form
+
+//-------------------general form properties-------------------
+
+.form-wrapper{
+	margin: -10px;
+}
+
+
+.form {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-self: center;
+	flex: 1 0 auto;
+	min-height: 100%;
+	width: 100%;
+	& > * {
+		padding: rem(10);
+	}
+
+	&__error {
+		position: absolute;
+		right: rem(10);
+		bottom: rem(-2);
+		@include adaptiveValue("font-size", 12, 8, 0, 1200);
+		font-weight: 500;
+		color: red;
+		z-index: 2;
+	}
+	// .form__title
+	&__title {
+	}
+	// .form__item
+	&__item {
+		position: relative;
+		flex: 1 1 100%; 
+		width: 100%;
+		min-width: rem(250);
+		& input {
+			@include adaptiveValue("height", $input-height-pc, $input-height-mob, 0, 1200);
+		}
+		input, textarea {
+			width: 100%;
+			padding: rem($input-padding);
+			background-color: $input-background-color;
+			@include adaptiveValue("font-size", $input-fontSize-pc, $input-fontSize-mob, 0, 1200);
+			font-weight: 500;
+			color: $text-color-major;
+			caret-color: $input-caret-color;
+			appearance: none;
+			border-radius: rem($input-border-radius);
+			border: 2px solid $border-color-major;
+			box-shadow: inset 7px 7px 7px rgba(156, 156, 156, 0.7), inset -4px -4px 7px #FFFFFF;
+			&:focus {
+				background-color: $input-background-color-focus;
+				outline: none;
+			}
+			&._form-error {
+				border-bottom: 2px inset red;
+				color: red;
+			}
+			&::placeholder {
+				@include adaptiveValue("font-size", 18, 12, 0, 1200);
+				font-weight: 400;
+				color: $input-placeholder-color;
+			}
+		}
+		textarea {
+			min-height: rem(100);
+			max-height: rem(200);
+			height: 100%;
+			resize: none;
+		}
+
+	}
+	// .form__input
+	&__input {
+	}
+	// .form__textarea
+	&__textarea {
+	}
+	// .form__submit
+	&__submit, &__submit button  {
+
+	}
+}
+
+//-------------------custom form properties-------------------
+
+
+

@@ -1,0 +1,135 @@
+//v1 170222 - стили дефолт
+//v2 260622 - стили дефолт
+//v3 190822 - стили дефолт
+
+
+* {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	-webkit-tap-highlight-color: transparent; //убирает синий фон при нажатии на ссылку
+}
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+:focus,
+:active {
+	// outline: none;
+}
+
+//focus for tabindex
+:focus-visible{
+	outline: 3px solid red;
+}
+
+	// outline: none;
+
+a:focus,
+a:active {
+	// outline: none;
+}
+
+
+html,
+body {
+	position: relative;
+	min-width: $minWidth + px;
+	-webkit-overflow-scrolling: touch;
+	height: 100%;
+	width: 100%;
+
+}
+body {
+	color: $text-color-major;
+	background-color:  $background-color-major;
+	line-height: 1;
+	font-family: $font-family-major;
+	font-size: $font-size-major;
+	font-weight: $font-weight-major;
+	letter-spacing: $letter-spacing-major;
+	font-style: $font-style;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	
+}
+input,
+button,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	vertical-align: middle;
+	background-color: inherit;
+}
+
+textarea {
+	resize: none;
+}
+
+label {
+	display: inline-block;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+// формат инпута при автозаподстановке данных браузером
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000s ease 0s;
+	-webkit-box-shadow: 0 0 0px 1000px transparent inset;
+	-webkit-text-fill-color: white !important;
+}
+
+button {
+	cursor: pointer;
+	color: inherit;
+	background-color: inherit;
+}
+a {
+	color: inherit;
+	cursor: pointer;
+}
+a:link,
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+ul li {
+	list-style: none;
+}
+img {
+	vertical-align: top;
+}
+svg path {
+	stroke: inherit;
+	stroke-width: inherit;
+	fill: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+
+/*
+&::-webkit-scrollbar {
+	display: none;
+}
+*/

@@ -1,0 +1,74 @@
+//v2 100822 - стили дефолтной кнопки
+//v3 190822 актуализация
+
+
+
+//<BUTTONS (a.btn+tab)>
+// Снипет (HTML): btn
+
+.btn {
+	position: relative;
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	margin: 0 auto;
+	overflow: hidden;
+	cursor: pointer;
+	& span {
+		display: block;
+		margin: auto;
+	}
+}
+
+//-------------------custom buttons properties-------------------
+
+.btn {
+	min-width: rem(270);
+	width: 100%;
+	@include adaptiveValue("height", $button-height-pc, $button-height-mob, 0, 1200);
+	height: 100%;
+	padding: rem(0) rem(20);
+	@include adaptiveValue("font-size", $font-size-btn-pc, $font-size-btn-mob, 0, 1200);
+	font-weight: 600;
+	text-transform: uppercase;
+	color: $text-color-btn;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
+	background-color:  $background-color-button-major;
+	border: 1px solid  rgba($color: $border-color-other-3, $alpha: .3);
+	border-radius: 5px;
+	box-shadow: inset 3px 5px 8px rgba($color: #000, $alpha: .2), inset -3px -4px 5px rgba($color: #fff, $alpha: .3), 1px 3px 6px rgba($color: #000, $alpha: .4);
+	animation: breathe 2.5s infinite forwards;
+	& span {
+		text-shadow: 2px 2px 3px rgba(0, 0, 0, .3);
+	}
+	@media (any-hover: hover){
+		&:hover{
+			box-shadow: inset 3px 4px 5px rgba($color: #000, $alpha: .3), inset -3px -4px 5px rgba($color: #fff, $alpha: .2), 1px 3px 6px rgba($color: #000, $alpha: .4);
+			background-color: $background-color-button-active;
+			border: 1px solid rgba($color: rgb(40, 40, 40), $alpha: .1);
+			animation: none;
+		}
+	}
+
+	@media (max-width:$mobileSmall){
+		//width: 80%;
+	}
+
+	&_hero, &_alhorithm, &_capability {
+		@include adaptiveValue("width", $button-width-pc, $button-width-mob, 2, 1200, 577);
+		@media (max-width: $mobileSmall){
+			width: 100%; 
+		}
+	}
+	// ripple effect, js in common.js
+	& span.ripple {
+		position: absolute;
+		background: $background-color-major;
+		pointer-events: none;
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+		animation: ripplesAnimate .5s linear;
+	}
+}
