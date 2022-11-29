@@ -83,8 +83,8 @@
 			padding: rem($input-padding);
 			background-color: $input-background-color;
 			@include adaptiveValue("font-size", $input-fontSize-pc, $input-fontSize-mob, 0, 1200);
-			font-weight: 500;
-			color: $text-color-major;
+			font-weight: 400;
+			color: $input-color;
 			caret-color: $input-caret-color;
 			appearance: none;
 			border-radius: rem($input-border-radius);

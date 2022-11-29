@@ -1,0 +1,73 @@
+<!-- progress bar preloader -->
+
+<!-- v1 181122 -->
+
+<div id="preloader">
+	<!-- styles: scss/base/preloader.scss -->
+	<script>
+		//preloader
+		const htmlDocument = document.documentElement;
+		const preloaderContainer = document.querySelector('#preloader');
+		function preloader() {
+			const preloaderImages = document.querySelector('[data-preloader]') ? document.querySelectorAll('[data-preloader] img') : document.querySelectorAll('img');
+
+			if (preloaderImages.length) {
+				const preloaderTemplate = `
+			<div class="preloader">
+				<div class="preloader__body">
+					<div class="preloader__counter">0%</div>
+					<div class="preloader__line"><span></span></div>
+				</div>
+			</div>`;
+				document.querySelector('html').insertAdjacentHTML("beforeend", preloaderTemplate);
+
+				const
+					preloader = document.querySelector('.preloader'),
+					showPecentLoad = document.querySelector('.preloader__counter'),
+					showLineLoad = document.querySelector('.preloader__line span');
+
+
+				let imagesLoadedCount = counter = progress = 0;
+
+				htmlDocument.classList.add('loading');
+				htmlDocument.classList.add('lock');
+
+				preloaderImages.forEach(preloaderImage => {
+					const imgClone = document.createElement('img');
+					if (imgClone) {
+						imgClone.onload = imageLoaded;
+						imgClone.onerror = imageLoaded;
+						preloaderImage.dataset.src ? imgClone.src = preloaderImage.dataset.src : imgClone.src = preloaderImage.src;
+					}
+				});
+				function setValueProgress(progress) {
+					showPecentLoad ? showPecentLoad.innerText = `${progress}%` : null;
+					showLineLoad ? showLineLoad.style.width = `${progress}%` : null;
+				}
+				showPecentLoad ? setValueProgress(progress) : null;
+			} else {
+				preloaderContainer.remove();
+			}
+			function imageLoaded() {
+				imagesLoadedCount = 0;
+				imagesLoadedCount++;
+				progress = Math.round((100 / preloaderImages.length) * preloaderImages.length);
+
+				const intervalId = setInterval(() => {
+					counter >= progress ? clearInterval(intervalId) : setValueProgress(++counter);
+					counter >= 100 ? addLoadedClass() : null;
+				}, 40);
+
+			}
+		}
+		function addLoadedClass() {
+			htmlDocument.classList.remove('lock');
+			htmlDocument.classList.remove('loading');
+			setTimeout(() => {
+				preloaderContainer.remove();
+			}, 500);
+		}
+		preloader();
+
+	</script>
+</div>

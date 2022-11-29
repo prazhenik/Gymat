@@ -1,0 +1,48 @@
+// v1 181122
+
+html.loading .preloader {
+	opacity: 1;
+}
+
+
+.preloader {
+	pointer-events: none;
+	z-index: 100;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $preloader-background-color;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity .5s ease 0s;
+}
+
+
+.preloader__body {
+	padding: rem(20);
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.preloader__counter {
+	font-family: $font-family-other-1;
+	@include adaptiveValue("font-size", 120, 50);
+	color: $preloader-text-color;
+	@include adaptiveValue("margin-bottom", 20, 5);
+}
+
+.preloader__line {}
+
+
+.preloader__line span {
+	display: inline-block;
+	@include adaptiveValue("height", 10, 5);
+	background-color: $preloader-progress-color;
+}
