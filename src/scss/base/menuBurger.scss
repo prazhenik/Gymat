@@ -1,6 +1,7 @@
 //v1 170222 - стили дефолт
 //v2 260622 - стили дефолт
 //v3 190822 - стили дефолт
+//v4 120922 new MD
 
 //---------------------------- ▼ ▼ ▼ BURGER ▼ ▼ ▼ -------------------------------
 
@@ -8,39 +9,36 @@
 
 .menu {
 	display: flex;
-	flex: 1 1 auto;
+	flex: 1 0 auto;
 	justify-content: center;
-	@include adaptiveValue("margin-left",30 , 15, 0, 1200 );
-	@include adaptiveValue("max-width",50 , 40, 3, 1200 );
-	@media (max-width: rem(1200)) {
+   align-items: center;
+	@include adaptiveValue("width",50 , 40, 3, 1200 );
+	@media (max-width:em($tablet)){
 		order: 3;
 	}
 	&__icon {
 		display: none;
 		position: relative;
-		@include adaptiveValue("height",30 ,20, 0, 1200);
-		@include adaptiveValue("width",50 , 40, 0, 1200);
+		width: 100%;
+		height: 100%;
+		max-height: rem(25);
 		cursor: pointer;
 		transition: all 0.2s ease;
-		@media (max-width: rem(1200)) {
+		@media (max-width: em($tablet)) {
 			display: block;
-			order: 3;
 			z-index: 100;
 			&._active {
 				transition: all 0.5s ease;
 				& span {
 					opacity: 0;
-					background: $background-color-other-1;
 				}
 				&::before {
 					top: 40%;
 					transform: rotate(-45deg);
-					background: $background-color-other-1;
 				}
 				&::after {
 					top: 40%;
 					transform: rotate(45deg);
-					background: $background-color-other-1;
 				}
 			}
 		}
@@ -53,12 +51,15 @@
 			left: 0;
 			width: 100%;
 			height: rem(2);
-			background: $text-color-secondary;
+			background: $background-color-major;
 			border-radius: 2px;
 			opacity: 1;
-			transition: all 0.2s ease ;
-			@media (max-width:$mobileSmall){
-				height: rem(1);
+			transition: all 0.2s ease;
+			&._active {
+				
+			}
+			@media (max-width:em($mobileSmall)){
+				height: rem(2);
 			}
 		}
 		&::before {
@@ -79,32 +80,26 @@
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		color: $text-color-secondary;
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, .4);
-		@media (max-width: rem(1200)) {
+		@media (max-width:em($tablet)) {
 			position: fixed;
 			justify-content: center;
 			text-align: center;
-			top: 0%;
+			top: 0;
+			bottom: 0;
 			right: rem(-$menu-width);
 			width: 100%;
 			max-width: rem($menu-width);
 			height: 100vh;
 			background: $background-color-menu;
-			text-shadow: none;
-			border-left: $border-color-other-3 2px solid;
 			overflow: auto;
 			z-index: 99;
 			transition: transform 0.2s ease;
 			&._active {
 				transform: translateX(rem(-$menu-width));
-				color: $text-color-major;
-				& ._navigator-active {
-					background-color: rgba($color: $background-color-secondary, $alpha: 1);
-					color: $text-color-secondary;
-					border: 2px solid transparent;
-				}
 			}
+		}
+		@media (max-width:em($tablet)) and (orientation: landscape){
+			display: block;
 		}
 	}
 
@@ -113,8 +108,8 @@
 		display: flex;
 		flex: 0 1 1100px;
 		flex-wrap: wrap;
-		justify-content: space-evenly;
-		@media (max-width: rem(1200)) {
+		justify-content: space-between;
+		@media (max-width:  em($tablet)) {
 			flex-direction: column;
 			flex-wrap: nowrap;
 			padding: rem(50) rem(0);
@@ -128,7 +123,7 @@
 		text-align: center; //устраняет скачек контента при смене fontsize на ховере
 		font-size: 0; //устраняет скачек контента при смене fontsize на ховере
 		line-height: math.div(22 , 22);
-		@media (max-width: rem(1200)) {
+		@media (max-width:em($tablet)) {
 			padding: rem(10);
 		}
 	}
@@ -139,28 +134,15 @@
 		padding: rem(5);
 		margin: rem(0) rem(5);
 		@include adaptiveValue("font-size",$font-size-menu-links-pc ,$font-size-menu-links-mob, 0, 1920, 1200 ); 
-		line-height: math.div( $font-size-menu-links-pc, $font-size-menu-links-pc);
-		letter-spacing: 0.02em;
-		font-weight: 500;
-		border: 2px solid transparent;
-		border-radius: 7px;
+		line-height: 1;
+		font-weight: 400;
+		color: $text-color-menu;
 		transition: transform .3s ease;
-		transition: border .2s;
-		@media (any-hover: hover){
-			&:hover{
-				border: 2px solid $border-color-major;
-				transition: border .2s;
-				@media (max-width:$tablet){
-					background-color: rgba($color: $background-color-other-1, $alpha: 1);
-					color: $text-color-secondary;
-				}
-			}
-		}
+
 		@media (any-hover: none){
 			&:hover,
 			&:active,
 			&.active {
-				background-color: rgba($color: $background-color-other-1, $alpha: 1);
 				color: $text-color-secondary;
 			}
 		}
@@ -174,7 +156,7 @@
 			visibility: hidden; //устраняет скачек контента при смене fontsize на ховере
 		}
 		*/
-		@media (max-width: rem(1200)) {
+		@media (max-width:em($tablet)) {
 			font-size: rem(22);
 			color: $text-color-menu;
 		}

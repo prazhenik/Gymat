@@ -6,9 +6,9 @@ import { isMobile } from "./functions.js";
 
 //прокрутка к топ при обновлении страницы
 
-window.onbeforeunload = function () {
-	window.scrollTo(0, 0);
-}
+// window.onbeforeunload = function () {
+// 	window.scrollTo(0, 0);
+// }
 
 //плавный скролл
 // const smoothLinks = document.querySelectorAll('a[href^="#"]:not(._popup-link)');
@@ -51,22 +51,9 @@ window.onbeforeunload = function () {
 
 
 
-/*
-//preloader
-window.onload = function () {
-	let body = document.querySelector("body");
-	let preloader = document.getElementById('preloader');
-	body.classList.add("_preloader")
-	//body_lock_add();
-	preloader.classList.add('_hide-preloader');
-	setInterval(function () {
-		preloader.classList.add('_preloader-hidden');
-		preloader.classList.remove('_hide-preloader');
-		body.classList.remove("_preloader")
-		//body_lock_remove();
-	}, 1000);
-}
-*/
+
+
+
 //------------------------------------LazyLoad----------------------------------------------------
 // var lazyLoadInstance = new LazyLoad({
 // 	// Your custom settings go here
@@ -133,21 +120,19 @@ window.onload = function () {
 
 //------------------------------------VanillaTilt----------------------------------------------------
 
-if (!isMobile.any()) {
-	VanillaTilt.init(document.querySelectorAll(".btn"), {
-		max: 10,
-		speed: 200,
-		glare: true,
-		easing: "cubic-bezier(.03,.98,.52,.99)",
-		"max-glare": .6,
-	});
-}
+// if (!isMobile.any()) {
+// 	VanillaTilt.init(document.querySelectorAll(".btn"), {
+// 		max: 10,
+// 		speed: 200,
+// 		glare: true,
+// 		easing: "cubic-bezier(.03,.98,.52,.99)",
+// 		"max-glare": .6,
+// 	});
+// }
 
 //---------------btns ripple animation------------------
 
 const buttons = document.querySelectorAll('.btn');
-
-console.log(buttons);
 
 buttons.forEach(button => {
 	button.addEventListener('click', function (e) {
@@ -181,32 +166,39 @@ const pauseIcon = document.querySelector('.controls__pause');
 
 // устраняет артефакт видео при загрузке
 window.addEventListener('load', () => {
-	setTimeout(() => {
-		vidItem.hidden = false;
-	}, 0)
+	if (vidItem) {
+		setTimeout(() => {
 
+			vidItem.hidden = false;
+		}, 0)
+	}
 })
 
 
 const play = () => {
-	hero.classList.add('_video_played');
-	setTimeout(function () {
-		vidItem.play();
-	}, 0);
-	playIcon.style.display = "none"
-	pauseIcon.style.display = "inline-block"
-	playIcon.classList.add('_icon-played')
+	if (vidItem) {
+		hero.classList.add('_video_played');
+		setTimeout(function () {
+			vidItem.play();
+		}, 0);
+		playIcon.style.display = "none"
+		pauseIcon.style.display = "inline-block"
+		playIcon.classList.add('_icon-played')
+	}
+
 }
 
-if (vidItem.play()) {
+if (vidItem && vidItem.play()) {
 	console.log("123eee");
 }
 
 const pause = () => {
-	hero.classList.remove('_video_played');
-	vidItem.pause();
-	playIcon.style.display = "inline-block"
-	pauseIcon.style.display = "none"
+	if (vidItem) {
+		hero.classList.remove('_video_played');
+		vidItem.pause();
+		playIcon.style.display = "inline-block"
+		pauseIcon.style.display = "none"
+	}
 }
 
 if ((window.onload || playBtn) && vidItem.play()) {
@@ -219,7 +211,7 @@ if ((window.onload || playBtn) && vidItem.play()) {
 		}
 	})
 	playBtn.addEventListener('keydown', (e) => {
-		if (e.which == 13  && e.which == 176 && e.code === 'Enter' && hero.classList.contains('_video_played')) {
+		if (e.which == 13 && e.which == 176 && e.code === 'Enter' && hero.classList.contains('_video_played')) {
 			pause();
 		} else {
 			play()

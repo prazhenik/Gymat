@@ -105,7 +105,7 @@ class Popup {
 		this.options.init ? this.initPopups() : null
 	}
 	initPopups() {
-		this.popupLogging(`Проснулся`);
+		this.popupLogging(`popup module is active`);
 		this.eventsPopup();
 	}
 	eventsPopup() {
@@ -253,9 +253,9 @@ class Popup {
 						popup: this
 					}
 				}));
-				this.popupLogging(`Открыл попап`);
+				this.popupLogging(`Popup is open`);
 
-			} else this.popupLogging(`Ой ой, такого попапа нет.Проверьте корректность ввода. `);
+			} else this.popupLogging(`there's no such popup`);
 		}
 	}
 	close(selectorValue) {
@@ -280,85 +280,85 @@ class Popup {
 				this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).innerHTML = '';
 		}
 		this.previousOpen.element.classList.remove(this.options.classes.popupActive);
-	
+
 		// aria-hidden
 		this.previousOpen.element.setAttribute('aria-hidden', 'true');
-if (!this._reopen) {
+		if (!this._reopen) {
 
-	document.documentElement.classList.remove(this.options.classes.bodyActive);
-	!this.bodyLock ? bodyUnlock() : null;
-	this.isOpen = false;
-}
-// Очищение адресной строки
-this._removeHash();
-if (this._selectorOpen) {
-	this.lastClosed.selector = this.previousOpen.selector;
-	this.lastClosed.element = this.previousOpen.element;
+			document.documentElement.classList.remove(this.options.classes.bodyActive);
+			!this.bodyLock ? bodyUnlock() : null;
+			this.isOpen = false;
+		}
+		// Очищение адресной строки
+		this._removeHash();
+		if (this._selectorOpen) {
+			this.lastClosed.selector = this.previousOpen.selector;
+			this.lastClosed.element = this.previousOpen.element;
 
-}
-// После закрытия
-this.options.on.afterClose(this);
-// Создаем свое событие после закрытия попапа
-document.dispatchEvent(new CustomEvent("afterPopupClose", {
-	detail: {
-		popup: this
-	}
-}));
+		}
+		// После закрытия
+		this.options.on.afterClose(this);
+		// Создаем свое событие после закрытия попапа
+		document.dispatchEvent(new CustomEvent("afterPopupClose", {
+			detail: {
+				popup: this
+			}
+		}));
 
-setTimeout(() => {
-	this._focusTrap();
-}, 50);
+		setTimeout(() => {
+			this._focusTrap();
+		}, 50);
 
-this.popupLogging(`Закрыл попап`);
+		this.popupLogging(`Popup is closed`);
 	}
-// Получение хэша 
-_getHash() {
-	if (this.options.hashSettings.location) {
-		this.hash = this.targetOpen.selector.includes('#') ?
-			this.targetOpen.selector : this.targetOpen.selector.replace('.', '#')
+	// Получение хэша 
+	_getHash() {
+		if (this.options.hashSettings.location) {
+			this.hash = this.targetOpen.selector.includes('#') ?
+				this.targetOpen.selector : this.targetOpen.selector.replace('.', '#')
+		}
 	}
-}
-_openToHash() {
-	let classInHash = document.querySelector(`.${window.location.hash.replace('#', '')}`) ? `.${window.location.hash.replace('#', '')}` :
-		document.querySelector(`${window.location.hash}`) ? `${window.location.hash}` :
-			null;
+	_openToHash() {
+		let classInHash = document.querySelector(`.${window.location.hash.replace('#', '')}`) ? `.${window.location.hash.replace('#', '')}` :
+			document.querySelector(`${window.location.hash}`) ? `${window.location.hash}` :
+				null;
 
-	const buttons = document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) ? document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) : document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash.replace('.', "#")}"]`);
-	if (buttons && classInHash) this.open(classInHash);
-}
-// Утсановка хэша
-_setHash() {
-	history.pushState('', '', this.hash);
-}
-_removeHash() {
-	history.pushState('', '', window.location.href.split('#')[0])
-}
-_focusCatch(e) {
-	const focusable = this.targetOpen.element.querySelectorAll(this._focusEl);
-	const focusArray = Array.prototype.slice.call(focusable);
-	const focusedIndex = focusArray.indexOf(document.activeElement);
+		const buttons = document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) ? document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) : document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash.replace('.', "#")}"]`);
+		if (buttons && classInHash) this.open(classInHash);
+	}
+	// Утсановка хэша
+	_setHash() {
+		history.pushState('', '', this.hash);
+	}
+	_removeHash() {
+		history.pushState('', '', window.location.href.split('#')[0])
+	}
+	_focusCatch(e) {
+		const focusable = this.targetOpen.element.querySelectorAll(this._focusEl);
+		const focusArray = Array.prototype.slice.call(focusable);
+		const focusedIndex = focusArray.indexOf(document.activeElement);
 
-	if (e.shiftKey && focusedIndex === 0) {
-		focusArray[focusArray.length - 1].focus();
-		e.preventDefault();
+		if (e.shiftKey && focusedIndex === 0) {
+			focusArray[focusArray.length - 1].focus();
+			e.preventDefault();
+		}
+		if (!e.shiftKey && focusedIndex === focusArray.length - 1) {
+			focusArray[0].focus();
+			e.preventDefault();
+		}
 	}
-	if (!e.shiftKey && focusedIndex === focusArray.length - 1) {
-		focusArray[0].focus();
-		e.preventDefault();
+	_focusTrap() {
+		const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
+		if (!this.isOpen && this.lastFocusEl) {
+			this.lastFocusEl.focus();
+		} else {
+			focusable[0].focus();
+		}
 	}
-}
-_focusTrap() {
-	const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
-	if (!this.isOpen && this.lastFocusEl) {
-		this.lastFocusEl.focus();
-	} else {
-		focusable[0].focus();
+	// Функция вывода в консоль
+	popupLogging(message) {
+		this.options.logging ? FLS(`[Popup]: ${message}`) : null;
 	}
-}
-// Функция вывода в консоль
-popupLogging(message) {
-	this.options.logging ? FLS(`[Попап]: ${message}`) : null;
-}
 }
 // Запускаем и добавляем в объект модулей
 flsModules.popup = new Popup({});
@@ -370,8 +370,8 @@ flsModules.popup = new Popup({});
 const cookiesPanel = document.querySelector('#cookies')
 const closePanel = document.querySelector('.panel__btn')
 
-if(cookiesPanel){
-	closePanel.addEventListener('click', ()=> {
+if (cookiesPanel) {
+	closePanel.addEventListener('click', () => {
 		cookiesPanel.style.transform = 'translateY(100%)'
 	})
 }

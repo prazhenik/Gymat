@@ -76,8 +76,6 @@ export function pageNavigation() {
 }
 // Работа с шапкой при скроле
 
-console.log(123);
-
 document.addEventListener('DOMContentLoaded', () => {
 	headerScroll()
 })

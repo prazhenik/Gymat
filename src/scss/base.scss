@@ -1,4 +1,7 @@
-// v4 190822 общая ревизия
+//v4 190822 общая ревизия
+//v5 120922 new MD
+//v6 041122 @media container fixes
+//v7 181122 preloader styles added, html styles added
 
 //========================== ПОДКЛЮЧЕНИЕ МОДУЛЕЙ BASE ===============================
 
@@ -15,6 +18,8 @@
 //@import "base/showmore"; // Стили блока "показать еще"
 //@import "base/fullscreen"; // Стили для полноэкранного блока
 //@import "base/sticky"; // Стили для липкого блока
+@import "base/preloader"; // Стили для прелоадера
+
 
 
 
@@ -27,6 +32,19 @@ html {
 	//height: calc(var(--vh, 1vh) * 100);
 	//	width: 100vw;
 	//position: fixed;
+
+	//добавить :not(.touch) для отключения на моб устройствах
+	&.lock, &.loading {
+		overflow: hidden;
+		touch-action: none;
+		overscroll-behavior: none;
+	}
+	&.lock:not(.touch) body, &.loading:not(.touch) body{
+		padding-right: calc($scrollbarWidth + 0px) !important; // общая коррекция контента на скролл при модалке/меню
+		 header {
+			padding-right: calc( $scrollbarWidth + 0px) !important; // коррекция хедера на скролл при модалке/меню если header position fixed ил relative
+		}
+	}
 }
 
 body {
@@ -59,23 +77,6 @@ body {
 		//transition: opacity 0.2s ease;
 	}
 
-
-	// Скролл заблокирован
-	&._preloader {
-		overflow: hidden;
-	}
-
-	//добавить :not(.touch) для отключения на моб устройствах
-	.lock.loaded & {
-		overflow: hidden;
-		touch-action: none;
-	}
-	.lock.loaded:not(.touch) & {
-		padding-right: calc($scrollbarWidth + 0px) !important; // общая коррекция контента на скролл при модалке/меню
-		& header {
-			padding-right: calc( $scrollbarWidth + 0px) !important; // коррекция хедера на скролл при модалке/меню если header position fixed ил relative
-		}
-	}
 }
 // Оболочка =======================================================================
 .wrapper {
@@ -83,7 +84,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: 100%;
 	background: $background-color-major;
 	position: relative;
 
@@ -110,12 +110,16 @@ body {
 	// Отзывчивая
 	[class*="__outerContainer"] {
 		@if ($maxWidthContainer>0) {
-			max-width: rem($maxWidthContainer);
-			box-sizing: border-box;
+			max-width: rem($containerWidth);
 			margin: 0 auto;
 		}
 		@if ($containerPadding>0) {
-			padding: 0 rem(math.div($containerPadding, 2));
+			@if ($maxWidthContainer>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			} @else {
+				@include adaptiveValue("padding-left", math.div($containerPadding, 2), 15);
+				@include adaptiveValue("padding-right", math.div($containerPadding, 2), 15);
+			}
 		}
 	}
 	[class*="__innerContainer"] {
@@ -138,19 +142,19 @@ body {
 			}
 		}
 		//--------------------------------------------MD 1: $mw + 20;--------------------------------------
-		@media (max-width: $pc) {
+		@media (max-width: em($pc)) {
 			max-width: rem(970);
 		}
 		//-----------------------------------------------MD 2: 991.98----------------------------------------------
-		@media (max-width: $tablet) {
+		@media (max-width:  em($tablet)) {
 			max-width: rem(750);
 		}
 		//-----------------------------------------------MD 3: 767.98-----------------------------------------------
-		@media (max-width: $mobile) {
+		@media (max-width:  em($mobile)) {
 			max-width: rem(540);
 		}
 		//-----------------------------------------------MD 4: 576.98-----------------------------------------------
-		@media (max-width: $mobileSmall) {
+		@media (max-width:  em($mobileSmall)) {
 			max-width: none;
 			@if ($containerPadding>0 and $maxWidthContainer>0) {
 				padding: 0 rem(math.div($containerPadding, 2));
@@ -159,7 +163,7 @@ body {
 	}
 	[class*="__innerContainer"] {
 		@if ($innerWidthContainer>0) {
-			max-width: rem($innerWidthContainer);
+			max-width: em($innerWidthContainer);
 			box-sizing: content-box;
 			margin: 0 auto;
 		}
@@ -175,6 +179,8 @@ body {
 
 [class*="-ibg"] {
 	position: relative;
+	display: block;
+	height: 100%;
 	img {
 		position: absolute;
 		width: 100%;

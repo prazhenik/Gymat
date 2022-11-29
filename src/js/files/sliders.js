@@ -19,9 +19,9 @@ EffectFade, Lazy, Manipulation
 // Базовые стили
 import "../../scss/base/swiper.scss";
 // Полный набор стилей из scss/libs/swiper.scss
-// import "../../scss/libs/swiper.scss";
+//import "../../scss/libs/swiper.scss";
 // Полный набор стилей из node_modules
-// import 'swiper/css';
+//import 'swiper/css';
 
 // Инициализация слайдеров
 function initSliders() {
@@ -35,13 +35,14 @@ function initSliders() {
 			modules: [Navigation],
 			observer: true,
 			observeParents: true,
-			slidesPerView: 'auto',
-			spaceBetween: 20,
-			autoHeight: false,
+			slidesPerView: "auto",
+			//slidesPerView: 2.2,
+			spaceBetween: 15,
+			//autoHeight: false,
 			speed: 800,
-
+			//centeredSlides: true,
 			touchRatio: .3,
-			simulateTouch: true,
+			//simulateTouch: true,
 			//loop: true,
 			//preloadImages: false,
 			//lazy: true,
@@ -73,8 +74,8 @@ function initSliders() {
 
 			// Кнопки "влево/вправо"
 			navigation: {
-				prevEl: '.swiper-button-prev',
-				nextEl: '.swiper-button-next',
+				prevEl: '.slider-nav-item_prev',
+				nextEl: '.slider-nav-item_next',
 			},
 
 			// Брейкпоинты

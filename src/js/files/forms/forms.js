@@ -29,7 +29,7 @@ data-goto-error - прокрутить страницу к ошибке
 export function formFieldsInit(options = { viewPass: false }) {
 	// Если включено, добавляем функционал "скрыть плейсходлер при фокусе"
 	const formFields = document.querySelectorAll('input[placeholder],textarea[placeholder]');
-	console.log(formFields);
+	//console.log(formFields);
 	if (formFields.length) {
 		formFields.forEach(formField => {
 			if (!formField.hasAttribute('data-placeholder-nohide')) {
@@ -108,7 +108,7 @@ export let formValidate = {
 	validateInput(formRequiredItem) {
 		let error = 0;
 		if (formRequiredItem.getAttribute("data-required") === "phone" || formRequiredItem.classList.contains("_phone")) {
-			console.log(formRequiredItem);
+			//console.log(formRequiredItem);
 			//formRequiredItem.value = formRequiredItem.value.replace(" ", "");
 			// if(this.phoneTest(formRequiredItem)) {
 			// 	if(formRequiredItem.value !== "") {
@@ -120,14 +120,14 @@ export let formValidate = {
 			if (this.phoneTest(formRequiredItem)) {
 				this.addError(formRequiredItem);
 				error++;
-				console.log(formRequiredItem.value);
+				//console.log(formRequiredItem.value);
 
 			} else {
 				this.removeError(formRequiredItem);
 			}
 
 		} else if (formRequiredItem.getAttribute("data-required") === "email" || formRequiredItem.classList.contains("_email")) {
-			console.log(formRequiredItem);
+			//console.log(formRequiredItem);
 			formRequiredItem.value = formRequiredItem.value.replace(" ", "");
 			if (this.emailTest(formRequiredItem)) {
 				this.addError(formRequiredItem);

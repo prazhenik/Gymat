@@ -1,4 +1,7 @@
-// v2 190822 общая ревизия 
+//v2 190822 общая ревизия
+//v3 120922 new MD style
+//v3 181122 preloader prop
+
 
 // ================================= GLOBAL roots ================================= 
 
@@ -7,7 +10,7 @@ $maxWidth: 1440; // Ширина полотна (макета)
 $maxWidthContainer: 2560; // Ширина ограничивающего контейнера (0 = нет ограничения, 2560 - mac)
 $innerWidthContainer: 1110; // контейнер для внутреннего контента
 $containerPadding: 30; // Общий отступ у контейнера (30 = по 15px слева и справа, 0 = нет отступа)
-$scrollbarWidth: 16px; //ширина скроллбара браузера для коррекции (16рх)
+$scrollbarWidth: 19px; //ширина скроллбара браузера для коррекции (16рх)
 $overlayZindex: 149; //индекс глобального оверлея
 $border-radius: rem(0);
 
@@ -16,10 +19,10 @@ $border-radius: rem(0);
 $containerWidth: $maxWidthContainer + $containerPadding;
 
 // Брейк-поинты
-$pc: em($containerWidth); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
-$tablet: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении 720
-$mobile: em(767.98); // Телефоны L 540
-$mobileSmall: em(576.98); // Телефоны S padding: 15px
+$pc: $containerWidth; // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: 991.98; // Планшеты, некоторые телефоны в горизонтальном положении 720
+$mobile: 767.98; // Телефоны L 540
+$mobileSmall: 576.98; // Телефоны S padding: 15px
 
 // Тип адаптива:
 // 1 = отзывчивость (у контейнера нет брейкпоинтов),
@@ -30,14 +33,14 @@ $responsiveType: 1;
 
 //font family
 
-$font-family-major: 'Open Sans', sans-serif; //general document font family
+$font-family-major: 'OpenSans', sans-serif; //general document font family
 $font-family-other-1: 'Audiowide', cursive; //element font family
 //$font-family-other-2: 'Montserrat', sans-serif; //element font family
 
 //font size
 $font-size-major: rem(16); //general document font size
 $font-size-main-title-pc: 55; //main title font size (hero)
-$font-size-main-title-mob: 26; //main title font size (hero)
+$font-size-main-title-mob: 33; //main title font size (hero)
 $font-size-main-subtitle-pc: 16; //main subtitle font size (hero)
 $font-size-main-subtitle-mob: 16; //main subtitle font size (hero)
 
@@ -47,11 +50,11 @@ $font-size-section-subtitle-pc: 16; //section subtitle font size
 $font-size-section-subtitle-mob: 14; //section subtitle font size
 
 $font-size-menu-links-pc: 16; //header menu links on pc @media font size
-$font-size-menu-links-mob: 18;  //header (burger) menu links on mobile @media font size
+$font-size-menu-links-mob: 16;  //header (burger) menu links on mobile @media font size
 
-$font-size-btn-pc: 22; //botton text font size
+$font-size-btn-pc: 14; //botton text font size
 $font-size-btn-mob: 14; //botton text font size
-$font-size-links-pc: 22; //links text font size
+$font-size-links-pc: 14; //links text font size
 $font-size-links-mob: 14; //links text font size
 
 //font weight
@@ -66,32 +69,35 @@ $font-style: normal;
 
 //text colors
 $text-color-major: rgba(158, 158, 158, 1); //general document text color
-$text-color-secondary: rgba(0, 0, 0, 1);
-$text-color-accent: rgba(50, 50, 50, 1);
+$text-color-secondary: rgba(255, 255, 255, 1);
+$text-color-accent: rgba(48, 48, 48, 1);
+$text-color-other1: rgba(174, 15, 15, 1); //iconfont text color
 
 
-$text-color-menu: rgba(158, 158, 158, 1); //menu links text color
-$text-color-menu-active: rgba(50, 50, 50, 1); //active menu links text color
+$text-color-menu: rgba(255, 255, 255, 1); //menu links text color
+$text-color-menu-active: rgba(240, 240, 240, 1); //active menu links text color
 
 $text-color-btn: rgba(255, 255, 255, 1); //menu links text color
 $text-color-btn-active: rgba(255, 255, 255, 1); //active menu links text color
+$text-color-btn-2: rgba(174, 15, 15, 1); //menu links text color
+$text-color-btn-2-active: rgba(255, 255, 255, 1); //active menu links text color
 
 $text-color-links:  rgba(0, 158, 255, 1); //a links text color
 $text-color-links-active: rgb(0, 120, 200); //a links text color
 
 $text-color-other-1: rgba(255, 255, 255, 1); //other text color
-$text-color-other-2: rgba(10, 250, 215, 1); //other text color/color hero title span
+$text-color-other-2: rgba(0, 0, 0, 1); 
 $text-color-other-3: rgba(10, 250, 215, 1); //other text color
 
-//bacground colors
+//background colors
 $background-color-major: rgba(255, 255, 255, 1); //Цвет фона по умолчанию
 $background-color-secondary:  rgba(248, 248, 248, 1); 
-$background-color-menu: rgba(255, 255, 255, 1); //menu bcg 
+$background-color-menu: rgba(174, 15, 15, 1); //menu bcg 
 $background-color-overlay-lock: rgba(0, 0, 0, .6); // overlays _lock
 $background-color-button-major:   rgba(174, 15, 15, 1); //
-$background-color-button-secondary:   rgba(217, 217, 217, 1); //
+$background-color-button-secondary:   rgba(240, 240, 240, 1); //
 $background-color-button-active:rgb(140, 10, 10); // 
-$background-color-other-1: rgba(30, 60, 120, 1); // 
+$background-color-other-1: rgba(255, 214, 205, 1); // adventages
 $background-color-other-2:  rgba(10, 180, 65, 1); // btn hover cover
 $background-color-other-3: rgba(10, 180, 65, 1); // btn hover cover
 
@@ -123,6 +129,9 @@ $button-width-mob: 350;
 $button-height-pc: 40;
 $button-height-mob: 40;
 
+$button-border-width: rem(1);
+$button-border-radius: rem(0);
+
 // default popup properties 
 $popup-whidth: 550;
 
@@ -131,12 +140,17 @@ $popup-whidth: 550;
 // default input properties  
 $input-height-pc: 75;
 $input-height-mob: 50;
-$input-fontSize-pc: 24;
+$input-fontSize-pc: 16;
 $input-fontSize-mob: 16;
 $input-border-radius: 0;
 $input-padding: 15;
-$input-color:  rgba(50, 50, 50, 1);
+$input-color: rgba(50, 50, 50, 1);
 $input-background-color: rgba(255, 255, 255, 1);
 $input-background-color-focus: rgba(230, 230, 230, 1);
-$input-caret-color:  rgba(50, 50, 50, 1);
+$input-caret-color:  rgba(158, 158, 158, 1);
 $input-placeholder-color: rgba(158, 158, 158, 1);
+
+// default preloader properties 
+$preloader-text-color:rgba(255, 255, 255, 1); 
+$preloader-background-color: rgba(0, 0, 0, 1); 
+$preloader-progress-color: rgba(174, 15, 15, 1);
