@@ -67,19 +67,22 @@
 	justify-content: space-between;
 	gap: rem(40);
 	width: 100%;
+	& [class*="__card"]{
+		position: relative;
+		overflow: hidden;
+		margin: calc(0 - ($containerPadding / 2)) + px;
+	}
+	& [class*="-card__wrapper"]{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		padding: calc($containerPadding / 2) + px;
+		height: 100%;
+	}
 }
-[class*="__card"]{
-	overflow: hidden;
-	margin: calc(0 - ($containerPadding / 2)) + px;
-}
-[class*="-card__wrapper"]{
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	padding: calc($containerPadding / 2) + px;
-	height: 100%;
-}
+
+
 
 //====================================== cтили БЭМ-блоков конкретного проекта ==========================================
 
