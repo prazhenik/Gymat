@@ -18,7 +18,7 @@
 		max-height: rem(1000);
 		height: 100vh;
 		min-height: 550px;
-		@include adaptiveValue("padding-top",$header-height-pc ,$header-height-mob, 0, 1200);
+		@include adaptiveValue("padding-top",$header-height-pc ,$header-height-mob, 0, 1200, 767.98);
 		@include adaptiveValue("padding-bottom",$header-height-pc ,$header-height-mob, 0, 1200, 767.98);
 		@media (max-width:em($mobileSmall)){
 			align-items: flex-end;

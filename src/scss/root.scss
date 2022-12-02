@@ -42,7 +42,7 @@ $font-size-major: rem(16); //general document font size
 $font-size-main-title-pc: 55; //main title font size (hero)
 $font-size-main-title-mob: 33; //main title font size (hero)
 $font-size-main-subtitle-pc: 16; //main subtitle font size (hero)
-$font-size-main-subtitle-mob: 16; //main subtitle font size (hero)
+$font-size-main-subtitle-mob: 14; //main subtitle font size (hero)
 
 $font-size-section-title-pc: 45; //section title font size
 $font-size-section-title-mob: 24; //section title font size
@@ -50,12 +50,12 @@ $font-size-section-subtitle-pc: 16; //section subtitle font size
 $font-size-section-subtitle-mob: 14; //section subtitle font size
 
 $font-size-menu-links-pc: 16; //header menu links on pc @media font size
-$font-size-menu-links-mob: 16;  //header (burger) menu links on mobile @media font size
+$font-size-menu-links-mob: 14;  //header (burger) menu links on mobile @media font size
 
 $font-size-btn-pc: 14; //botton text font size
-$font-size-btn-mob: 14; //botton text font size
+$font-size-btn-mob: 12; //botton text font size
 $font-size-links-pc: 14; //links text font size
-$font-size-links-mob: 14; //links text font size
+$font-size-links-mob: 12; //links text font size
 
 //font weight
 $font-weight-major: 400; //general document font weight
@@ -127,7 +127,7 @@ $button-width-pc: 500;
 $button-width-mob: 350;
 
 $button-height-pc: 40;
-$button-height-mob: 40;
+$button-height-mob: 35;
 
 $button-border-width: rem(1);
 $button-border-radius: rem(0);
