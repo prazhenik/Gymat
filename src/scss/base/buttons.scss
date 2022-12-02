@@ -1,10 +1,11 @@
 //v2 100822 - стили дефолтной кнопки
 //v3 190822 актуализация
 //v4 120922 new MD
+//v5 011222 new logic
 
+//BUTTONS
+//Снипет (HTML): bbtn - button button
 
-//<BUTTONS (a.btn+tab)>
-// Снипет (HTML): btn
 
 .btn {
 	position: relative;
@@ -12,55 +13,24 @@
 	flex: 0 0 auto;
 	align-items: center;
 	justify-content: center;
-	align-self: center;
-	margin: 0 auto;
-	border-radius: $button-border-radius;
+	width: fit-content;
+	@include adaptiveValue("height", $button-height-pc, $button-height-mob, 0, 1200, 320);
+	@include adaptiveValue("font-size", $font-size-btn-pc, $font-size-btn-mob, 0, 1200, 320);
+	color: $text-color-btn;
 	border: $button-border-width solid rgba($color: $border-color-button, $alpha: 1);
-	@include adaptiveValue("font-size", $font-size-btn-pc, $font-size-btn-mob, 0, 1200);
-	white-space: nowrap;
+	border-radius: $button-border-radius;
+	column-gap: rem(10);
 	overflow: hidden;
 	cursor: pointer;
-	& span {
-		display: block;
-		margin: auto;
-		
+	&__button {
+		white-space: nowrap;
+		line-height: 1;
 	}
 }
 
-//-------------------custom buttons properties-------------------
 
-.swiper-button-disabled {
-	opacity: .3;
-	pointer-events: none;
-}
-
+// ripple effect, js in common.js
 .btn {
-	width: auto;
-	@include adaptiveValue("height", $button-height-pc, $button-height-mob, 0, 1200);
-	height: 100%;
-	padding: rem(0) rem(10);
-	font-weight: 600;
-	text-transform: uppercase;
-	color: $text-color-btn;
-	background-color:  $background-color-button-major;
-	border-top-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	transition: background-color .3s ease, border .3s ease, color .3s ease;
-	@media (any-hover: hover){
-		&:hover{
-			background-color: $background-color-button-active;
-			border: 1px solid rgba($color: rgb(40, 40, 40), $alpha: .1);
-			animation: none;
-			transition: background-color .3s ease, border .3s ease, color .3s ease;
-		}
-	}
-
-	@media (max-width:em($mobileSmall)){
-		//width: 80%;
-	}
-
-
-	// ripple effect, js in common.js
 	& span.ripple {
 		position: absolute;
 		background: $background-color-major;
@@ -69,4 +39,33 @@
 		transform: translate(-50%, -50%);
 		animation: ripplesAnimate .5s linear;
 	}
+}
+
+//-------------------custom buttons properties-------------------
+
+.btn {
+	padding: rem(0) rem(10);
+	background-color:  $background-color-button-major;
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	transition: background-color .2s ease, border .2s ease, color .2s ease;
+		@media (any-hover: hover){
+		&:hover{
+			background-color: $background-color-button-active;
+			border: 1px solid rgba($color: rgb(40, 40, 40), $alpha: .1);
+			animation: none;
+			transition: background-color .2s ease, border .2s ease, color .2s ease;
+		}
+	}
+	&__button{
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+}
+
+
+.swiper-button-disabled {
+	opacity: .3;
+	pointer-events: none;
+	filter: grayscale(1);
 }

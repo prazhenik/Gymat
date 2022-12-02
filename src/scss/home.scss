@@ -636,5 +636,94 @@
 	}
 }
 
+//--------------trainers-----------------
+
+.trainers {
+	background-color: $background-color-secondary;
+	// .trainers__outerContainer
+	&__outerContainer {
+	}
+	// .trainers__innerContainer
+	&__innerContainer {
+	}
+	// .trainers__content
+	&__content {
+
+	}
+	// .trainers__row
+	&__row {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		// .trainers__row_top
+		&_top {
+			text-align: center;
+			&:not(:last-child) {
+				margin-bottom:  rem(40);
+			}
+		}
+		// .trainers__row_bottom
+		&_bottom {
+
+		}
+	}
+	// .trainers__text
+	&__text {
+	}
+	// .trainers__title
+	&__title {
+	}
+	// .trainers__cards
+	&__cards {
+		max-width: rem(920);
+	}
+	// .trainers__card
+	&__card {
+	}
+}
+
+.trainers-card {
+	
+	// .trainers-card__wrapper
+	&__wrapper {
+
+	}
+	// .trainers-card__photo
+	&__photo {
+		margin-top: rem(-25);
+		padding-left: rem(40);
+		& img {
+			padding-top: rem(25);
+		}
+	}
+	// .trainers-card__text
+	&__text {
+		width: 100%;
+		margin-top: rem(-57);
+		text-align: center;
+	}
+	// .trainers-card__name
+	&__name {
+		height: rem(46);
+		line-height: 46px;
+		font-weight: 600;
+		color: $text-color-secondary;
+		background: url('@img/icons/hatch.svg') center center/contain no-repeat;
+		&:not(:last-child) {
+			margin-bottom:  rem(5);
+		}
+	}
+	// .trainers-card__position
+	&__position {
+		&:not(:last-child) {
+			margin-bottom:  rem(10);
+		}
+	}
+	// .trainers-card__socials
+	&__socials {
+
+	}
+}
 
 

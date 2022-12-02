@@ -5,12 +5,83 @@
 // ------------------------------------ стили типовых СЕКЦИЙ --------------------------------------------------
 
 .section-content {
-	//padding: rem(96) rem(0);
 	@include adaptiveValue("padding-top", 96 , 60, 0, 1200, 320);
 	@include adaptiveValue("padding-bottom", 96 , 60, 0, 1200, 320);
 }
 
-//====================================== cтили БЭМ-блоков ==========================================
+// ------------------------------- стили повторяющихся текстовых элементов --------------------------------------------------.
+.section-title-label-text {
+	font-weight: 600;
+	font-size: rem(14);
+	line-height: rem(32);
+	color: $text-color-secondary;
+	text-transform: uppercase;
+}
+
+.section-title-text {
+	font-family: 'Audiowide';
+	@include adaptiveValue("font-size", $font-size-section-title-pc, $font-size-section-title-mob, 0, 1200);
+	line-height: math.div(55 , 45);
+	color: $text-color-accent;
+}
+
+.section-subtitle-text {
+	@include adaptiveValue("font-size", $font-size-section-subtitle-pc, $font-size-section-subtitle-mob, 0, 1200);
+	line-height: math.div(26 , 16);
+	color: $text-color-major;
+}
+
+
+// ------------------------------- стили типовых БЛОКОВ --------------------------------------------------
+
+
+.site-logo {
+	//width: 100%;
+	//@include adaptiveValue("width", 180 ,130, 0, 1200);
+	//@include adaptiveValue("height",40 , 35, 0, 1200);
+	//border-radius: 10px;
+	//flex: 0 1 auto;
+	// .site-logo__item
+	&__link {
+
+	}
+}
+
+//socials for iconfont
+.socials {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: rem(15);
+	font-size: rem(14);
+	@media (max-width:em($tablet)){
+		gap: rem(25);
+		font-size: rem(30);  
+	}
+}
+
+//cards section base stiles
+[class*="__cards"] {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(rem(290), 1fr));
+	justify-content: space-between;
+	gap: rem(40);
+	width: 100%;
+}
+[class*="__card"]{
+	overflow: hidden;
+	margin: calc(0 - ($containerPadding / 2)) + px;
+}
+[class*="-card__wrapper"]{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: calc($containerPadding / 2) + px;
+	height: 100%;
+}
+
+//====================================== cтили БЭМ-блоков конкретного проекта ==========================================
 
 .section-title {
 	// .section-title__wrapper
@@ -89,65 +160,6 @@
 		@include adaptiveValue("font-size", 14, 12, 0, 1200);
 		line-height: math.div(24 , 14);
 		color: $text-color-major;
-	}
-}
-
-
-// ------------------------------- стили повторяющихся текстовых элементов --------------------------------------------------.
-.section-title-label-text {
-	font-weight: 600;
-	font-size: rem(14);
-	line-height: rem(32);
-	color: $text-color-secondary;
-	text-transform: uppercase;
-}
-
-.section-title-text {
-	font-family: 'Audiowide';
-	@include adaptiveValue("font-size", $font-size-section-title-pc, $font-size-section-title-mob, 0, 1200);
-	line-height: math.div(55 , 45);
-	color: $text-color-accent;
-}
-
-.section-subtitle-text {
-	@include adaptiveValue("font-size", $font-size-section-subtitle-pc, $font-size-section-subtitle-mob, 0, 1200);
-	line-height: math.div(26 , 16);
-	color: $text-color-major;
-}
-
-
-
-
-
-
-
-
-// ------------------------------- стили типовых БЛОКОВ --------------------------------------------------
-
-
-.site-logo {
-	//width: 100%;
-	//@include adaptiveValue("width", 180 ,130, 0, 1200);
-	//@include adaptiveValue("height",40 , 35, 0, 1200);
-	//border-radius: 10px;
-	//flex: 0 1 auto;
-	// .site-logo__item
-	&__link {
-
-	}
-}
-
-
-.socials__link {
-	position: relative;
-	display: inline-block;
-	& img {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
 	}
 }
 
