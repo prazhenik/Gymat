@@ -2354,7 +2354,7 @@ body::after {
 
 @media (max-width: 75em) {
   .menu__link {
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
 }
 
@@ -2430,11 +2430,11 @@ body::after {
   }
 
   .btn {
-    height: 2.5rem;
+    height: 2.1875rem;
   }
 
   .btn {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
   }
 
   .popup__content {
@@ -2503,10 +2503,6 @@ body::after {
 
   .header__item_search {
     margin-right: 0.625rem;
-  }
-
-  .hero__content {
-    padding-top: 3.75rem;
   }
 
   .offer-hero__title {
@@ -2641,6 +2637,10 @@ body::after {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+  }
+
+  .hero__content {
+    padding-top: 3.75rem;
   }
 
   .hero__content {
@@ -2890,27 +2890,27 @@ body::after {
     }
 }
 
-@supports (height: clamp( 2.5rem , 2.5rem  +  0vw , 2.5rem )) {
+@supports (height: clamp( 2.1875rem , 2.0738636364rem  +  0.5681818182vw , 2.5rem )) {
     .btn {
-      height: clamp( 2.5rem , 2.5rem  +  0vw , 2.5rem );
+      height: clamp( 2.1875rem , 2.0738636364rem  +  0.5681818182vw , 2.5rem );
     }
 }
 
-@supports not (height: clamp( 2.5rem , 2.5rem  +  0vw , 2.5rem )) {
+@supports not (height: clamp( 2.1875rem , 2.0738636364rem  +  0.5681818182vw , 2.5rem )) {
     .btn {
-      height: calc(2.5rem + 0 * (100vw - 20rem) / 55);
+      height: calc(2.1875rem + 0.3125 * (100vw - 20rem) / 55);
     }
 }
 
-@supports (font-size: clamp( 0.875rem , 0.875rem  +  0vw , 0.875rem )) {
+@supports (font-size: clamp( 0.75rem , 0.7045454545rem  +  0.2272727273vw , 0.875rem )) {
     .btn {
-      font-size: clamp( 0.875rem , 0.875rem  +  0vw , 0.875rem );
+      font-size: clamp( 0.75rem , 0.7045454545rem  +  0.2272727273vw , 0.875rem );
     }
 }
 
-@supports not (font-size: clamp( 0.875rem , 0.875rem  +  0vw , 0.875rem )) {
+@supports not (font-size: clamp( 0.75rem , 0.7045454545rem  +  0.2272727273vw , 0.875rem )) {
     .btn {
-      font-size: calc(0.875rem + 0 * (100vw - 20rem) / 55);
+      font-size: calc(0.75rem + 0.125 * (100vw - 20rem) / 55);
     }
 }
 
@@ -3046,18 +3046,6 @@ body::after {
     }
 }
 
-@supports (padding-top: clamp( 3.75rem , 2.6136363636rem  +  5.6818181818vw , 6.875rem )) {
-    .hero__content {
-      padding-top: clamp( 3.75rem , 2.6136363636rem  +  5.6818181818vw , 6.875rem );
-    }
-}
-
-@supports not (padding-top: clamp( 3.75rem , 2.6136363636rem  +  5.6818181818vw , 6.875rem )) {
-    .hero__content {
-      padding-top: calc(3.75rem + 3.125 * (100vw - 20rem) / 55);
-    }
-}
-
 @supports (font-size: clamp( 2.0625rem , 1.5625rem  +  2.5vw , 3.4375rem )) {
     .offer-hero__title {
       font-size: clamp( 2.0625rem , 1.5625rem  +  2.5vw , 3.4375rem );
@@ -3084,15 +3072,15 @@ body::after {
 }
 
 @media (min-width: 75em) and (max-width: 120em) {
-@supports (font-size: clamp( 1rem , 1rem  +  0vw , 1rem )) {
+@supports (font-size: clamp( 0.875rem , 0.6666666667rem  +  0.2777777778vw , 1rem )) {
     .menu__link {
-      font-size: clamp( 1rem , 1rem  +  0vw , 1rem );
+      font-size: clamp( 0.875rem , 0.6666666667rem  +  0.2777777778vw , 1rem );
     }
 }
 
-@supports not (font-size: clamp( 1rem , 1rem  +  0vw , 1rem )) {
+@supports not (font-size: clamp( 0.875rem , 0.6666666667rem  +  0.2777777778vw , 1rem )) {
     .menu__link {
-      font-size: calc(1rem + 0 * (100vw - 75rem) / 45);
+      font-size: calc(0.875rem + 0.125 * (100vw - 75rem) / 45);
     }
 }
 }
@@ -3202,6 +3190,18 @@ body::after {
 }
 
 @media (min-width: 47.99875em) and (max-width: 75em) {
+@supports (padding-top: clamp( 3.75rem , -1.8051536966rem  +  11.5735382621vw , 6.875rem )) {
+    .hero__content {
+      padding-top: clamp( 3.75rem , -1.8051536966rem  +  11.5735382621vw , 6.875rem );
+    }
+}
+
+@supports not (padding-top: clamp( 3.75rem , -1.8051536966rem  +  11.5735382621vw , 6.875rem )) {
+    .hero__content {
+      padding-top: calc(3.75rem + 3.125 * (100vw - 47.99875rem) / 27.00125);
+    }
+}
+
 @supports (padding-bottom: clamp( 3.75rem , -1.8051536966rem  +  11.5735382621vw , 6.875rem )) {
     .hero__content {
       padding-bottom: clamp( 3.75rem , -1.8051536966rem  +  11.5735382621vw , 6.875rem );
